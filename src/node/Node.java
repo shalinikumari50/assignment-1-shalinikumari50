@@ -8,6 +8,11 @@ public class Node<T> {
         this.data = data;
     }
 
+    @Override
+    public String toString() {
+        return this.data.toString();
+    }
+
     public T getData() {
         return data;
     }
