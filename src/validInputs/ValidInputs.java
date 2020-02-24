@@ -16,4 +16,20 @@ public class ValidInputs {
             throw new MyNoInputException("Enter a valid input");
         }
     }
+
+    public String inputValidString() {
+        String inputFromUser;
+        while (true) {
+            inputFromUser = scanner.nextLine().trim();
+
+            try {
+                // check if user directly pressed enter key
+                isEmpty(inputFromUser);
+            } catch (MyNoInputException e) {
+                System.out.println(e.getMessage());
+                continue;
+            }
+            return inputFromUser;
+        }
+    }
 }
