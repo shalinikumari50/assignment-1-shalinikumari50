@@ -111,4 +111,19 @@ public class MyLinkedList<T> {
         }
     }
 
+    public int display() {
+        if (head == null) {
+            return 0;
+        } else {
+            Node temp = head;
+            int count = 0;
+            while (temp != null) {
+                count++;
+                System.out.println(count + ". " + temp.toString());
+                temp = temp.getNext();
+            }
+            return count;
+        }
+    }
+
 }
