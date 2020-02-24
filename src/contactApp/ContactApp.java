@@ -1,5 +1,6 @@
 package contactApp;
 
+import contactList.ContactList;
 import myLinkedList.MyLinkedList;
 import person.Person;
 import validInputs.ValidInputs;
@@ -42,5 +43,23 @@ public class ContactApp {
             }
             return firstName + " " + lastName;
         }
+    }
+
+    public ContactList enterContactList() {
+        ContactList contactList = new ContactList();
+        char choice = 'y';
+        int flag = 0;
+        while (choice != 'n') {
+            if (contactList.addContactNumber() == -1) {
+                if (flag == 0) {
+                    return null;
+                }
+                return contactList;
+            }
+            flag = 1;
+            System.out.println("Would you like to add another contact number? (y/n):");
+            choice = validInputs.inputValidChoice('y', 'n');
+        }
+        return contactList;
     }
 }
