@@ -12,4 +12,8 @@ public class ContactApp {
     }
 
     private MyLinkedList<Person> personMyLinkedList;
+
+    public ContactApp() {
+        personMyLinkedList = new MyLinkedList<>();
+    }
 }
