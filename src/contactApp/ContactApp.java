@@ -5,6 +5,8 @@ import myLinkedList.MyLinkedList;
 import person.Person;
 import validInputs.ValidInputs;
 
+import java.util.regex.Pattern;
+
 public class ContactApp {
     private static ValidInputs validInputs;
 
@@ -61,5 +63,22 @@ public class ContactApp {
             choice = validInputs.inputValidChoice('y', 'n');
         }
         return contactList;
+    }
+
+    public String enterEmail() {
+        String emailAddress;
+        System.out.println("Email Address: ");
+        emailAddress = validInputs.inputValidString();
+        String regex = "(?:[a-zA-Z0-9]+[._-])*[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+[._-])*[a-zA-Z0-9]+\\.[a-zA-Z]{2,4}";
+        boolean matches = Pattern.matches(regex, emailAddress);
+        while (!matches) {
+            System.out.println("Enter a valid email address or 'q' to skip email address entry");
+            emailAddress = validInputs.inputValidString();
+            if (emailAddress.equals("q")) {
+                return null;
+            }
+            matches = Pattern.matches(regex, emailAddress);
+        }
+        return emailAddress;
     }
 }
