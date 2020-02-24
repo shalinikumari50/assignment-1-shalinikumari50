@@ -96,4 +96,22 @@ public class ContactList extends MyLinkedList<ContactNumber> {
         return 0;
     }
 
+    public int editMenu() {
+        int countOfContacts = displayContactNumbers();
+        System.out.println("press:\n" +
+                "'a' - to add a contact number\n" +
+                "'d' - to delete a contact number\n" +
+                "'e' - to edit a contact number\n" +
+                "'q' - to return to menu");
+        char userChoice = validInputs.inputValidChoice('a', 'd', 'e', 'q');
+        if (userChoice == 'e') {
+            return editContactNumber(countOfContacts);
+        } else if (userChoice == 'd') {
+            return deleteContactNumber(countOfContacts);
+        } else if (userChoice == 'a') {
+            return addContactNumber();
+        }
+        return -1;
+    }
+
 }
