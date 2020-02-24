@@ -8,4 +8,12 @@ public class MyLinkedList<T> {
     public MyLinkedList() {
         head = null;
     }
+
+    public Node<T> getHead() {
+        return head;
+    }
+
+    public void setHead(Node<T> head) {
+        this.head = head;
+    }
 }
