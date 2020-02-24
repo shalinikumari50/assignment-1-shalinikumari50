@@ -131,4 +131,17 @@ public class ContactApp {
         System.out.println("Email address: " + personNode.getData().getEmailAddress());
         System.out.println("-------- * -------- * -------- * --------");
     }
+
+    public void displayAllContacts() {
+        if (personMyLinkedList.getHead() == null) {
+            System.out.println("No contacts!");
+        } else {
+            System.out.println("---Here are all your contacts---");
+            Node<Person> temp = personMyLinkedList.getHead();
+            while (temp != null) {
+                displayAContact(temp);
+                temp = temp.getNext();
+            }
+        }
+    }
 }
