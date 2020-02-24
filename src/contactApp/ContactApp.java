@@ -1,5 +1,7 @@
 package contactApp;
 
+import myLinkedList.MyLinkedList;
+import person.Person;
 import validInputs.ValidInputs;
 
 public class ContactApp {
@@ -8,4 +10,6 @@ public class ContactApp {
     static {
         validInputs = new ValidInputs();
     }
+
+    private MyLinkedList<Person> personMyLinkedList;
 }
