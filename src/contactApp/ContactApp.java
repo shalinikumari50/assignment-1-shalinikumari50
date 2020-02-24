@@ -144,4 +144,33 @@ public class ContactApp {
             }
         }
     }
+
+    public void searchAContact() {
+        if (personMyLinkedList.getHead() == null) {
+            System.out.println("No Contacts!");
+            return;
+        }
+        System.out.println("You could search for a contact from their first names:");
+        String name = validInputs.inputValidName();
+        if (name == null) {
+            return;
+        }
+        MyLinkedList<Person> searchedPersons = personMyLinkedList.search(name);
+        if (searchedPersons == null) {
+            System.out.println("NO RESULTS FOUND!");
+        } else {
+            int count = searchedPersons.countNodes();
+            if (count == 1) {
+                System.out.println(count + " match found!");
+            } else {
+                System.out.println(count + " matches found!");
+            }
+            Node<Person> temp = searchedPersons.getHead();
+            while (temp != null) {
+                displayAContact(temp);
+                temp = temp.getNext();
+            }
+        }
+    }
+
 }
