@@ -1,5 +1,6 @@
 package validInputs;
 
+import myInvalidNameException.MyInvalidNameException;
 import myNoInputException.MyNoInputException;
 
 import java.util.Scanner;
@@ -44,6 +45,28 @@ public class ValidInputs {
                 continue;
             }
             input = inputFromUser.charAt(0);
+            return input;
+        }
+    }
+
+    public String inputValidName() {
+        //a valid name contains only alphabets(a-z or A-Z)
+        int flag = 0;
+        while (true) {
+            String input = inputValidString();
+            if (input.matches(".*[^a-zA-Z].*")) {
+                if (flag == 1 && input.equals("0")) {
+                    return null;
+                }
+                try {
+                    throw new MyInvalidNameException("The name should not contain any special characters or digits!");
+                } catch (MyInvalidNameException e) {
+                    System.out.println(e.getMessage());
+                }
+                System.out.println("Enter a valid name or '0' to return to menu");
+                flag = 1;
+                continue;
+            }
             return input;
         }
     }
