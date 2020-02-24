@@ -80,4 +80,20 @@ public class ContactList extends MyLinkedList<ContactNumber> {
         return 0;
     }
 
+    public int editContactNumber(int countOfContacts) {
+        System.out.println("Press the number against the contact to edit it:");
+        int contactNumberToEdit = validInputs.inputValidInteger(countOfContacts);
+        if (contactNumberToEdit == -1) {
+            return -1;
+        }
+        Node<ContactNumber> contactEntered = enterContactNumber();
+        if (contactEntered == null) {
+            return -1;
+        }
+        delete(contactNumberToEdit);
+        insertInAlphabeticOrder(contactEntered);
+        System.out.println("Contact number edited!");
+        return 0;
+    }
+
 }
