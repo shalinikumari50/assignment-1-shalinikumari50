@@ -38,4 +38,13 @@ public class ContactList extends MyLinkedList<ContactNumber> {
         return new Node<>(new ContactNumber(contactNumber));
 
     }
+
+    public int displayContactNumbers() {
+        if (getHead() == null) {
+            System.out.println("No contact numbers!");
+            return -1;
+        }
+        System.out.println("Here are all the contact numbers: ");
+        return display();
+    }
 }
