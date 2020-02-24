@@ -2,6 +2,7 @@ package contactApp;
 
 import contactList.ContactList;
 import myLinkedList.MyLinkedList;
+import node.Node;
 import person.Person;
 import validInputs.ValidInputs;
 
@@ -80,5 +81,32 @@ public class ContactApp {
             matches = Pattern.matches(regex, emailAddress);
         }
         return emailAddress;
+    }
+
+    public void addContact() {
+        System.out.println("You have chosen to add a new contact: ");
+
+        String nameEntry = enterName();
+        if (nameEntry == null) {
+            return;
+        }
+        String firstName = nameEntry.split(" ")[0];
+        String lastName = nameEntry.split(" ")[1];
+        ContactList contactList = enterContactList();
+        if (contactList == null) {
+            return;
+        }
+        String emailEntry = "";
+        System.out.println("Would you like to add email address? (y/n):");
+        int choice = validInputs.inputValidChoice('y', 'n');
+        if (choice == 'y') {
+            emailEntry = enterEmail();
+            if (emailEntry == null) {
+                emailEntry = "";
+            }
+        }
+        Person person = new Person(firstName, lastName, contactList, emailEntry.toLowerCase());
+        personMyLinkedList.insertInAlphabeticOrder(new Node<>(person));
+        System.out.println("Contact added!");
     }
 }
