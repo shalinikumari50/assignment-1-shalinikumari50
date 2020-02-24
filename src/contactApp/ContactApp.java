@@ -205,4 +205,12 @@ public class ContactApp {
         }
     }
 
+    public void printEditMenu() {
+        System.out.println("Enter:\n" +
+                "1 - to edit name\n" +
+                "2 - to edit contact numbers\n" +
+                "3 - to edit email address\n" +
+                "4 - to return to main menu");
+    }
+
 }
