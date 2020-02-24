@@ -61,4 +61,23 @@ public class ContactList extends MyLinkedList<ContactNumber> {
         System.out.println("Contact number added!");
         return 0;
     }
+
+    public int deleteContactNumber(int countOfContacts) {
+        if (countOfContacts == 1) {
+            System.out.println("Cannot delete the only contact available!");
+            return -1;
+        }
+        System.out.println("Press the number against the contact to delete it :");
+        int contactNumberToEdit = validInputs.inputValidInteger(countOfContacts);
+        if (contactNumberToEdit == -1) {
+            return -1;
+        }
+        System.out.println("Do you really want to delete " + getNode(contactNumberToEdit) + "? (y/n) :");
+        if (validInputs.inputValidChoice('y', 'n') == 'y') {
+            delete(contactNumberToEdit);
+            System.out.println("Contact number deleted!");
+        }
+        return 0;
+    }
+
 }
