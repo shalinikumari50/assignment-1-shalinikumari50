@@ -7,6 +7,12 @@ public class ContactNumber {
         this.contactNumber = contactNumber;
     }
 
+    @Override
+    public String toString() {
+        return contactNumber;
+    }
+
+
     public String getContactNumber() {
         return contactNumber;
     }
