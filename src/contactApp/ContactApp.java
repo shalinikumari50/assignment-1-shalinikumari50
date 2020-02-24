@@ -182,4 +182,10 @@ public class ContactApp {
         return personMyLinkedList.display();
     }
 
+    public boolean deleteVerified(Node<Person> person) {
+        System.out.println("Do you really want to delete " + person.toString() + "'s contact? (y/n) :");
+        char choice = validInputs.inputValidChoice('y', 'n');
+        return choice == 'y';
+    }
+
 }
