@@ -188,4 +188,21 @@ public class ContactApp {
         return choice == 'y';
     }
 
+    public void deleteAContact() {
+        int count = displayNames();
+        if (count == -1) {
+            return;
+        }
+        System.out.println("Press the number against the contact to delete it:");
+
+        int toDelete = validInputs.inputValidInteger(count);
+        if (toDelete == -1) {
+            return;
+        }
+        if (deleteVerified(personMyLinkedList.getNode(toDelete))) {
+            Node<Person> deleted = personMyLinkedList.delete(toDelete);
+            System.out.println(deleted.toString() + "'s contact deleted from list!");
+        }
+    }
+
 }
