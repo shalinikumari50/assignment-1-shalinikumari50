@@ -277,4 +277,36 @@ public class ContactApp {
                 "Press 6 to exit program");
     }
 
+    public void contactAppMenu() {
+        int choice = -1;
+        while (choice != 6) {
+            printMenu();
+            System.out.println("Enter choice");
+            choice = validInputs.inputValidInteger(6);
+            switch (choice) {
+                case 1:
+                    addContact();
+                    break;
+                case 2:
+                    displayAllContacts();
+                    break;
+                case 3:
+                    searchAContact();
+                    break;
+                case 4:
+                    deleteAContact();
+                    break;
+                case 5:
+                    editPersonContact();
+                    break;
+                case 6:
+                    System.out.println("Closing the App...");
+                    System.out.println("Have a nice day!");
+                    break;
+
+            }
+        }
+    }
+
+
 }
