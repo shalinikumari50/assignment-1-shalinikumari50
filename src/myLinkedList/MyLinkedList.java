@@ -56,4 +56,20 @@ public class MyLinkedList<T> {
             return deletedNode;
         }
     }
+
+    public Node<T> getNode(int position) {
+        int count = 0;
+        if (head == null) {
+            return null;
+        }
+        Node<T> temp = head;
+        while (temp != null) {
+            count++;
+            if (count == position) {
+                return temp;
+            }
+            temp = temp.getNext();
+        }
+        return null;
+    }
 }
