@@ -213,4 +213,58 @@ public class ContactApp {
                 "4 - to return to main menu");
     }
 
+    public void editPersonContact() {
+        int count = displayNames();
+        if (count == -1) {
+            return;
+        }
+        System.out.println("Press the number against the contact to edit it : ");
+        int toEdit = validInputs.inputValidInteger(count);
+        if (toEdit == -1) {
+            return;
+        }
+        Node<Person> contactToEdit = personMyLinkedList.getNode(toEdit);
+
+        char loop = 'y';
+        while (loop == 'y') {
+            displayAContact(contactToEdit);
+            printEditMenu();
+            int choice = validInputs.inputValidInteger(4);
+            if (choice == -1) {
+                return;
+            }
+            switch (choice) {
+                case 1:
+                    String nameEntry = enterName();
+                    if (nameEntry == null) {
+                        continue;
+                    }
+                    Node<Person> editedContact = new Node<>(new Person(nameEntry.split(" ")[0], nameEntry.split(" ")[1], contactToEdit.getData().getContactList(), contactToEdit.getData().getEmailAddress()));
+                    personMyLinkedList.delete(toEdit);
+                    toEdit = personMyLinkedList.insertInAlphabeticOrder(editedContact);
+                    contactToEdit = editedContact;
+                    System.out.println("Name edited!");
+                    break;
+                case 2:
+                    int result = contactToEdit.getData().getContactList().editMenu();
+                    if (result == -1) {
+                        continue;
+                    }
+                    break;
+                case 3:
+                    String emailEntry = enterEmail();
+                    if (emailEntry == null) {
+                        continue;
+                    }
+                    contactToEdit.getData().setEmailAddress(emailEntry.toLowerCase());
+                    System.out.println("Email edited!");
+                    break;
+                case 4:
+                    return;
+            }
+            System.out.println("Would you like to edit anything else? (y/n):");
+            loop = validInputs.inputValidChoice('y', 'n');
+        }
+    }
+
 }
