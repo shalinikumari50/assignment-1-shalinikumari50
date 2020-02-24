@@ -72,4 +72,27 @@ public class MyLinkedList<T> {
         }
         return null;
     }
+
+    //returns a list of nodes which match partially or completely to the given string
+    public MyLinkedList<T> search(String name) {
+        if (head == null) {
+            System.out.println("List is empty");
+            return null;
+        } else {
+            MyLinkedList<T> searchedResult = new MyLinkedList<>();
+            Node<T> temp = head;
+            int flag = 0;
+            while (temp != null) {
+                if (temp.toString().toLowerCase().contains(name.toLowerCase())) {
+                    searchedResult.insertInAlphabeticOrder(new Node<>(temp.getData()));
+                    flag = 1;
+                }
+                temp = temp.getNext();
+            }
+            if (flag == 0) {
+                return null;
+            }
+            return searchedResult;
+        }
+    }
 }
