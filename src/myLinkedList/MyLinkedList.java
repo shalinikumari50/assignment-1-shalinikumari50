@@ -34,4 +34,26 @@ public class MyLinkedList<T> {
         }
         return ++position;
     }
+
+    public Node<T> delete(int position) {
+        if (head == null) {
+            System.out.println("List is empty");
+            return null;
+        } else {
+            int pos = 1;
+            if (position == 1) {
+                Node<T> deletedHead = head;
+                head = head.getNext();
+                return deletedHead;
+            }
+            Node<T> temp = head;
+            while (pos < position - 1) {
+                temp = temp.getNext();
+                pos += 1;
+            }
+            Node<T> deletedNode = temp.getNext();
+            temp.setNext(temp.getNext().getNext());
+            return deletedNode;
+        }
+    }
 }
