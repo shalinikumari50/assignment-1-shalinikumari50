@@ -47,4 +47,18 @@ public class ContactList extends MyLinkedList<ContactNumber> {
         System.out.println("Here are all the contact numbers: ");
         return display();
     }
+
+    public int addContactNumber() {
+        Node<ContactNumber> contactEntered = enterContactNumber();
+        if (contactEntered == null) {
+            return -1;
+        }
+        if (matchFound(contactEntered.toString())) {
+            System.out.println("This contact is already added!");
+            return 0;
+        }
+        insertInAlphabeticOrder(contactEntered);
+        System.out.println("Contact number added!");
+        return 0;
+    }
 }
